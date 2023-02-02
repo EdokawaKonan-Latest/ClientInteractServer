@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>receiveClient.qml</file>
+        <file>Server.qml</file>
+    </qresource>
+</RCC>
