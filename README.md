@@ -11,7 +11,7 @@
 加入心跳包可实现自动连接功能<br>
 加入互斥锁防止数据重复读写<br>
 目前效果图片<br>
-![image](https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/show.jpg)
+![image](https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/show.jpg)<br>
 目前视频演示效果链接<br>
 https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4<br>
 
