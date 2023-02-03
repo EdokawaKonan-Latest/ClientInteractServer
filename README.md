@@ -1,5 +1,5 @@
 # ClientInteractServer
-通过udp通讯实现跨局域网的实时视频数据转发应用<br>
+通过udp通讯实现跨局域网的实时视频数据转发应用,原理类似于FRP<br>
 流程图如下<br>
 ![image](https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/Process.jpg)<br>
 
