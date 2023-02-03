@@ -13,7 +13,7 @@
 目前效果图片<br>
 ![image](https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/show.jpg)
 目前视频演示效果链接<br>
-(https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4)<br>
+https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4<br>
 
 
 
