@@ -4,6 +4,7 @@
 #include <udpserver.h>
 #include <QThread>
 #include <time.h>
+int m_flag;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);

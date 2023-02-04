@@ -26,7 +26,6 @@ private:
     QTimer *m_pTimer;
     QByteArray m_s;
     QByteArray m_clientData;
-    int m_flag = 0;
 signals:
     void triggerServer(QByteArray temp);
 public slots:

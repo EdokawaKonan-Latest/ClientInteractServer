@@ -27,12 +27,10 @@ private:
     //服务端的ip
     QHostAddress addr;
     //服务端端口
-    quint16 port;
-    
+    quint16 port;  
     QTimer *m_pTimer;
     QByteArray m_s;
     QByteArray m_serverData;
-    int m_flag = 0;
 };
 
 #endif // TCPSOCKET_H

@@ -1,5 +1,20 @@
 ﻿#include "udpclient.h"
+extern int m_flag;
+UdpClient::UdpClient(QObject *parent) : QThread(parent) {
+
+    //线程开始
+    start();
+}
 void UdpClient::run() {
+    //client的定义
+    m_client = new QUdpSocket;
+    //服务端ip addr
+    addr = "192.168.8.130";
+    port = 50001;
+    //设置缓冲区大小
+    m_client->setReadBufferSize(32 * 1024 * 1024);
+    //连接服务器
+    connect(addr, port);
     //定时器定义
     m_pTimer = new QTimer();
     m_pTimer->setInterval(200);
@@ -13,15 +28,12 @@ void UdpClient::run() {
     });
     QByteArray temp = "";
     while (1) {
-        if(!m_flag && m_serverData.size()) {
-            //加锁
-            m_flag = 1;
+        if(m_serverData.size()) {
             sendMessage(m_serverData);
-            //解锁
-            m_flag = 0;
             //数据清空
             m_serverData.clear();
         }
+
         //接受服务端数据
         temp = receiveMessage();
         //数据追加
@@ -29,29 +41,16 @@ void UdpClient::run() {
             m_s += temp;
         }
         //数据超过10000就触发信号
-        if(!m_flag && m_s.size() >= 50000) {
+        if(m_s.size() >= 50) {
             emit triggerClient(m_s);//触发信号
             m_s.clear();
         }
         //处理消息
-        QCoreApplication::processEvents();
+        //QCoreApplication::processEvents();
     }
 }
 
-UdpClient::UdpClient(QObject *parent) : QThread(parent) {
-    //client的定义
-    m_client = new QUdpSocket;
-    //服务端ip addr
-    addr = "192.168.3.12";
-    port = 50001;
-    //设置缓冲区大小
-    m_client->setReadBufferSize(32 * 1024 * 1024);
-    //连接服务器
-    connect(addr, port);
-    //m_client->write("hello");
-    //线程开始
-    start();
-}
+
 
 //连接服务器
 bool UdpClient::connect(QHostAddress ip,quint16 port) {
@@ -71,10 +70,8 @@ bool UdpClient::connect(QHostAddress ip,quint16 port) {
 bool UdpClient::sendMessage(QByteArray s) {
     if(s.size() == 0) return 1;
     static int a = 0;
-    if( a += m_client->writeDatagram(s, s.size(), addr, port)) {
-        qDebug() <<"send size" <<a;
-        return 1;
-    }
+    m_client->writeDatagram(s, s.size(), addr, port);
+    m_flag = 0;
     return 0;
 }
 
@@ -91,9 +88,6 @@ QByteArray UdpClient::receiveMessage() {
 
 //槽
 void UdpClient::slotServerSend(QByteArray temp) {
-    static int len = 0;
-    len += temp.size();
-    qDebug() << "temp" << len;
     m_serverData = temp;
 }
 
