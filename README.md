@@ -1,10 +1,7 @@
 # ClientInteractServer
 通过udp通讯实现跨局域网的数据双向转发应用,原理类似于FRP<br>
-由于视频数据量问题,server client双线程会导致数据丢包严重问题,视频数据无法拼接.以下链接为修改单向通信链接,并且已经测试成功转发视频数据并且完成拼接.<br>
-https://github.com/EdokawaKonan-Latest/One-way-video-data-forwarding
 流程图如下<br>
 ![image](https://github.com/EdokawaKonan-Latest/ClientInteractServer/blob/main/image/Process.jpg)<br>
-
 代码部分为数据转发应用服务端b以及客户端c<br>
 现外部客户端a为Linux下的gstream,外部服务端d为模拟网络助手<br>
 目前已经实现功能为<br>
