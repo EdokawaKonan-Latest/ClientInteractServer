@@ -8,7 +8,8 @@
 #include <QThread>
 #include "QCoreApplication"
 #include <udpclient.h>
-
+#include <vector>
+using std::vector;
 class UdpServer : public QThread {
     Q_OBJECT
 public:
@@ -24,12 +25,13 @@ private:
     QHostAddress addr;
     quint16 port;
     QTimer *m_pTimer;
-    QByteArray m_s;
-    QByteArray m_clientData;
+    vector<QByteArray>  m_s;
+    //QByteArray m_clientData;
+    vector<QByteArray> m_clientData;
 signals:
-    void triggerServer(QByteArray temp);
+    void triggerServer(vector<QByteArray> temp);
 public slots:
-    void slotClientSend(QByteArray temp);
+    void slotClientSend(vector<QByteArray> temp);
 };
 
 #endif // TCPSERVER_H

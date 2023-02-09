@@ -6,7 +6,8 @@
 #include <QThread>
 #include <udpserver.h>
 #include "QCoreApplication"
-
+#include <vector>
+using std::vector;
 class UdpClient : public QThread
 {
     Q_OBJECT
@@ -18,9 +19,9 @@ public:
     Q_INVOKABLE bool sendMessage(QByteArray sendStr);
     Q_INVOKABLE QByteArray receiveMessage();
 signals:
-    void triggerClient(QByteArray temp);
+    void triggerClient(vector<QByteArray> temp);
 public slots:
-    void slotServerSend(QByteArray temp);
+    void slotServerSend(vector<QByteArray> temp);
     
 private:
     QUdpSocket *m_client;
@@ -29,8 +30,9 @@ private:
     //服务端端口
     quint16 port;  
     QTimer *m_pTimer;
-    QByteArray m_s;
-    QByteArray m_serverData;
+    vector<QByteArray>  m_s;
+    vector<QByteArray> m_serverData;
+    //QByteArray m_serverData;
 };
 
 #endif // TCPSOCKET_H
